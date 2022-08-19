@@ -25,6 +25,6 @@ public class UserApiController {
         user.setRole(RoleType.USER);
         int result = userService.save(user);
         // result를 받아서 -1이면 실패, 1이면성공
-        return new ResponseDto<Integer>(HttpStatus.OK,result);  // 자바오브젝트를 json으로 변환해서 리턴
+        return new ResponseDto<Integer>(HttpStatus.OK.value(),result);  // 자바오브젝트를 json으로 변환해서 리턴
     }
 }
