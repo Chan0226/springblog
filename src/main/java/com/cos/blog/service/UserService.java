@@ -14,14 +14,12 @@ public class UserService {
     
     // 회원가입
     @Transactional    // 트랜잭션 만들기
-    public int save(User user){
-        try {
-            userRepository.save(user);
-            return 1;
-        }catch (Exception e){
-            e.printStackTrace();
-            System.out.println("UserService: 회원가입():"+e.getMessage());
-        }
-        return -1;
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    @Transactional(readOnly = true) // select할 때 트랜잭션 시작, 서비스 종료시에 트랜잭션 종료 (정합성)
+    public User login(User user){
+        return userRepository.findByUsernameAndPassword(user.getUsername(), user.getPassword());
     }
 }
