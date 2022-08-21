@@ -7,6 +7,7 @@ import com.cos.blog.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ public class UserApiController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
+    //    @Autowired
 //    private HttpSession session;
 
 
@@ -34,14 +35,4 @@ public class UserApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(),1);  // 자바오브젝트를 json으로 변환해서 리턴
     }
 
-//    @PostMapping("/api/user/login")
-//    public ResponseDto<Integer>login(@RequestBody User user,HttpSession session){
-//        System.out.println("UserApiController:login호출됨");
-//        User principal = userService.login(user);  //principal(접근주체)
-//        if(principal!=null){
-//            // 세션을 만들어 로그인 후에 홈페이지 가도 로그인 유지
-//            session.setAttribute("principal",principal);
-//        }
-//        return new ResponseDto<Integer>(HttpStatus.OK.value(),1);
-//    }
 }
